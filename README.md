@@ -35,4 +35,7 @@ class LinkNode
 |:---:|:---:|:---:|
 |Stack.h|栈(Stack)模板类|需要具体的派生类来定义实现|
 |SeqStack.cpp|顺序栈|入栈、出栈、取栈顶元素等|
+|LinkedList.h|单链表结点的类|用于链式栈调用生成结点，无具体功能|
+|LinkedStack.cpp|链式栈|入栈、出栈、取栈顶元素等|
+|LinkedStackTest.cpp|链式栈测试|-|
 *注：\*.exe文件为运行文件*
