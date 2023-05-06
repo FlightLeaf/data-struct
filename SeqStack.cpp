@@ -1,7 +1,10 @@
 #include <assert.h>
 #include <iostream>
-#include "Stack.h"
 #include <ostream>
+#include "Stack.h"
+
+using namespace std;
+
 const int stackIncrement = 20;
 template <class T>
 class SeqStack : public Stack<T>
@@ -12,7 +15,7 @@ public:
 
     /// @brief 入栈
     /// @param x 待入栈元素值
-    void Push(T &x);
+    void Push(const T &x);
 
     /// @brief 退栈
     /// @param x 获取退栈元素的引用
@@ -27,18 +30,16 @@ public:
     bool getTop(T &x);
 
     /// @brief 判断栈是否为空
-    /// @return true 为空
-    /// @return false 非空
-    bool IsEmpty() const { return (top == -1) ? true : false; };
+    /// @return true 栈空
+    bool IsEmpty() { return (top == -1) ? true : false; };
 
     /// @brief 判断栈是否已满
-    /// @return true 栈已满
-    /// @return false 栈未满
-    bool IsFull() const { return (top == maxSize - 1) ? true : false; };
+    /// @return true 栈满
+    bool IsFull() { return (top == maxSize - 1) ? true : false; };
 
     /// @brief 获取栈元素个数
     /// @return 栈元素个数
-    int getSize() const { return top + 1; };
+    int getSize() { return top + 1; };
 
     /// @brief 清空栈
     void MakeEmpty() { top = -1; };
@@ -47,7 +48,15 @@ public:
     /// @param os 输出流对象的引用
     /// @param s 要输出的栈对象的引用
     /// @return ostream& 返回输出流对象的引用以便实现链式表达式
-    friend std::ostream &operator<<(std::ostream &os, SeqStack<T> &s);
+    friend std::ostream &operator<<(std::ostream &os,const SeqStack<T>& s)
+    {
+        os << "top = " << s.top <<endl;
+        for (int i = 0; i <= s.top; i++)
+        {
+            os << i << ":" << s.elements[i] <<endl;
+        }
+        return os;
+    }
 
 private:
     T *elements;            // 存放栈元素的数组
@@ -57,7 +66,7 @@ private:
 };
 
 template <class T>
-SeqStack<T>::SeqStack(int sz) : top(-1), maxSize(sz)
+SeqStack<T>::SeqStack(int sz) : top(-1), maxSize(sz) 
 {
     elements = new T[maxSize];
     assert(elements != NULL);
@@ -69,7 +78,7 @@ void SeqStack<T>::overflowProcess()
     T *newArray = new T[maxSize + stackIncrement];
     if (newArray == NULL)
     {
-        cerr << "内存分配失败！" << endl;
+        cerr<<"内存分配失败！"<<endl;
         exit(1);
     }
     for (int i = 0; i <= top; i++)
@@ -81,7 +90,7 @@ void SeqStack<T>::overflowProcess()
 }
 
 template <class T>
-void SeqStack<T>::Push(T &x)
+void SeqStack<T>::Push(const T &x)
 {
     if (IsFull())
         overflowProcess();
@@ -103,17 +112,5 @@ bool SeqStack<T>::getTop(T &x)
     if (IsEmpty())
         return false;
     x = elements[top];
-    return ture;
+    return true;
 }
-
-template <class T>
-std::ostream &operator<<(std::ostream &os, SeqStack<T> &s)
-{
-    os << "top = " << s.top << endl;
-    for (int i = 0; i <= top; i++)
-    {
-        os << i << ":" << s.elements[i] << endl;
-    }
-    return os;
-}
-
