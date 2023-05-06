@@ -8,7 +8,7 @@ class SeqStack : public Stack<T>
 {
 public:
     SeqStack(int sz = 50);              // 建立一个空栈
-    ~SeqStack() { delete []elements; }; // 析构函数
+    ~SeqStack() { delete[] elements; }; // 析构函数
 
     /// @brief 入栈
     /// @param x 待入栈元素值
@@ -47,7 +47,7 @@ public:
     /// @param os 输出流对象的引用
     /// @param s 要输出的栈对象的引用
     /// @return ostream& 返回输出流对象的引用以便实现链式表达式
-    friend std::ostream& operator<<(std::ostream& os, SeqStack<T>& s);
+    friend std::ostream &operator<<(std::ostream &os, SeqStack<T> &s);
 
 private:
     T *elements;            // 存放栈元素的数组
@@ -63,54 +63,57 @@ SeqStack<T>::SeqStack(int sz) : top(-1), maxSize(sz)
     assert(elements != NULL);
 }
 
-template<class T>
+template <class T>
 void SeqStack<T>::overflowProcess()
 {
     T *newArray = new T[maxSize + stackIncrement];
-    if(newArray == NULL) 
+    if (newArray == NULL)
     {
-        cerr<<"内存分配失败！"<<endl;
+        cerr << "内存分配失败！" << endl;
         exit(1);
     }
-    for(int i = 0;i<=top;i++)
+    for (int i = 0; i <= top; i++)
     {
         newArray[i] = elements[i];
     }
-    delete []elements;
-    elements  = newArray;
-
+    delete[] elements;
+    elements = newArray;
 }
 
-template<class T>
-void SeqStack<T>::Push(T& x)
+template <class T>
+void SeqStack<T>::Push(T &x)
 {
-    if(IsFull()) overflowProcess();
+    if (IsFull())
+        overflowProcess();
     elements[++top] = x;
 }
 
-template<class T>
-bool SeqStack<T>::Pop(T& x)
+template <class T>
+bool SeqStack<T>::Pop(T &x)
 {
-    if(IsEmpty()) return false;
+    if (IsEmpty())
+        return false;
     x = elements[top--];
     return true;
 }
 
-template<class T>
-bool SeqStack<T>::getTop(T& x)
+template <class T>
+bool SeqStack<T>::getTop(T &x)
 {
-    if(IsEmpty()) return false;
+    if (IsEmpty())
+        return false;
     x = elements[top];
     return ture;
 }
 
-template<class T>
-std::ostream& operator<<(std::ostream& os, SeqStack<T>& s)
+template <class T>
+std::ostream &operator<<(std::ostream &os, SeqStack<T> &s)
 {
-    os<<"top = "<<s.top<<endl;
-    for(int i = 0;i<=top;i++)
+    os << "top = " << s.top << endl;
+    for (int i = 0; i <= top; i++)
     {
-        os<<i<<":"<<s.elements[i]<<endl;
+        os << i << ":" << s.elements[i] << endl;
     }
     return os;
 }
+
