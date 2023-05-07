@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
     CalculatorLinkedStack c;
-    char temp[] = "1+2)+2+3)";
-    cout<<c.judge(temp);
+    double rel = c.Run();
+    cout<<rel<<endl;
     return 0;
 }
