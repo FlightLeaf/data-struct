@@ -6,17 +6,13 @@
 using namespace std;
 class CalculatorLinkedStack
 {
-private:
-    /// @brief 待计算的表达式
-    char *input;
-
+public:
     /// @brief 操作符栈
-    LinkedStack<char> *op;
+    LinkedStack<char> op;
 
     /// @brief 操作数栈
-    LinkedStack<double> *value;
+    LinkedStack<double> value;
 
-public:
     /// @brief 构造函数
     CalculatorLinkedStack(){};
 
@@ -30,11 +26,7 @@ public:
     double Calulator(char *in);
 
     /// @brief 清空栈
-    void clear()
-    {
-        op->makeEmpty();
-        value->makeEmpty();
-    };
+    void clear(){};
 
     /// @brief 栈内优先级判断
     /// @param op 待判断的操作符
@@ -184,18 +176,18 @@ bool CalculatorLinkedStack::IsDigit(char temp)
 
 bool CalculatorLinkedStack::get2Operands(double &left, double &right)
 {
-    if (value->IsEmpty())
+    if (value.IsEmpty())
     {
         cerr << "无右操作数" << endl;
         return false;
     }
-    value->Pop(right);
-    if (value->IsEmpty())
+    value.Pop(right);
+    if (value.IsEmpty())
     {
         cerr << "无左操作数" << endl;
         return false;
     }
-    value->Pop(left);
+    value.Pop(left);
     return true;
 }
 
@@ -208,23 +200,23 @@ void CalculatorLinkedStack::DoOperator(char op)
         switch (op)
         {
         case '+':
-            value->Push(left + right);
+            value.Push(left + right);
             break;
         case '-':
-            value->Push(left - right);
+            value.Push(left - right);
             break;
         case '*':
-            value->Push(left * right);
+            value.Push(left * right);
             break;
         case '/':
             if (right == 0.0)
             {
                 cerr << "除数为零！" << endl;
             }
-            value->Push(left / right);
+            value.Push(left / right);
             break;
         case '%':
-            value->Push(fmod(left, right));
+            value.Push(fmod(left, right));
             break;
         }
     }
@@ -232,6 +224,44 @@ void CalculatorLinkedStack::DoOperator(char op)
 
 void CalculatorLinkedStack::AddOperand(char val)
 {
-    double val = (double)val;
-    value->Push(val);
+    std::string str(1, val); 
+    double num = std::stod(str); 
+    value.Push(val);
+}
+
+double CalculatorLinkedStack::Run()
+{
+    char ch = '#',ch1,op_temp;
+    op.Push(ch);
+    cin.get(ch);
+    while(op.IsEmpty() == false&&ch!='#')
+    {
+        if(IsDigit(ch))
+        {
+            value.Push(ch);
+            cin.get(ch);
+        }
+        else
+        {
+            op.getTop(ch1);
+            if(isp(ch1)<icp(ch))
+            {
+                op.Push(ch);
+                cin.get(ch);
+            }
+            else if(isp(ch1)>icp(ch))
+            {
+                op.Pop(op_temp);
+                DoOperator(op_temp);
+            }
+            else
+            {
+                op.Pop(op_temp);
+                if(op_temp == '(') cin.get(ch);
+            }
+        }
+    }
+    double rel;
+    value.getTop(rel);
+    return rel;
 }
