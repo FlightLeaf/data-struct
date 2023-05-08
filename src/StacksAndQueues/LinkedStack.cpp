@@ -1,7 +1,7 @@
 #include <iostream>
 #include <assert.h>
-#include"LinkedList.h"
-#include"Stack.h"
+#include "LinkedList.h"
+#include "Stack.h"
 
 using namespace std;
 
@@ -46,7 +46,7 @@ public:
     /// @return ostream& 返回输出流对象的引用以便实现链式表达式
     friend std::ostream &operator<<(std::ostream &os, LinkedStack<T> &s)
     {
-        os<<"栈中元素个数："<<s.getSize()<<endl;
+        os<<"Number:"<<s.getSize()<<endl;
         LinkNode<T> *temp = s.top;
         int i = 0;
         while(temp!=NULL)
