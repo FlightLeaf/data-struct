@@ -7,6 +7,9 @@ using namespace std;
 class CalculatorLinkedStack
 {
 public:
+    /// @brief 计算式
+    string input;
+
     /// @brief 操作符栈
     LinkedStack<char> op;
 
@@ -26,7 +29,11 @@ public:
     double Calulator(char *in);
 
     /// @brief 清空栈
-    void clear(){};
+    void clear()
+    {
+        op.makeEmpty();
+        value.makeEmpty();
+    };
 
     /// @brief 栈内优先级判断
     /// @param op 待判断的操作符
@@ -63,8 +70,11 @@ public:
     bool get2Operands(double &left, double &right);
 
     /// @brief 操作数入栈
-    /// @param value 待入栈的操作数
+    /// @param val 待入栈的操作数
     void AddOperand(char val);
+
+    /// @brief 中缀转后缀
+    void postfix();
 };
 
 int CalculatorLinkedStack::isp(char op)
@@ -224,32 +234,38 @@ void CalculatorLinkedStack::DoOperator(char op)
 
 void CalculatorLinkedStack::AddOperand(char val)
 {
-    std::string str(1, val); 
-    double num = std::stod(str); 
-    value.Push(val);
+    int va = val-'0';//转为整型
+    value.Push(va);
+}
+
+void CalculatorLinkedStack::postfix()
+{
+    
 }
 
 double CalculatorLinkedStack::Run()
 {
-    char ch = '#',ch1,op_temp;
-    op.Push(ch);
-    cin.get(ch);
-    while(op.IsEmpty() == false&&ch!='#')
+    getline(cin,input);
+    input = "("+input+")";
+    cout<<input<<endl;
+    char ch1,op_temp;
+    op.Push('#');
+    int len = input.size();
+    for(int i = 0; i<len ;i++)
     {
-        if(IsDigit(ch))
+        if(IsDigit(input[i]))
         {
-            value.Push(ch);
-            cin.get(ch);
+            AddOperand(input[i]);
         }
         else
         {
             op.getTop(ch1);
-            if(isp(ch1)<icp(ch))
+            if(isp(ch1)<icp(input[i]))
             {
-                op.Push(ch);
-                cin.get(ch);
+                op.Push(input[i]);
+                continue;
             }
-            else if(isp(ch1)>icp(ch))
+            else if(isp(ch1)>icp(input[i]))
             {
                 op.Pop(op_temp);
                 DoOperator(op_temp);
@@ -257,7 +273,7 @@ double CalculatorLinkedStack::Run()
             else
             {
                 op.Pop(op_temp);
-                if(op_temp == '(') cin.get(ch);
+                if(op_temp == '(') continue;
             }
         }
     }
