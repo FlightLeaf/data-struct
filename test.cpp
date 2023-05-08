@@ -2,9 +2,8 @@
 using namespace std;
 int main()
 {
-    char ch = '#';
-    LinkedStack<char> c;
-    c.Push(ch);
-    cout<<c<<endl;
+
+    CalculatorLinkedStack g;
+    cout<<g.isp('*');
     return 0;
 }
