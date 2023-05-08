@@ -1,4 +1,5 @@
 #include<iostream>
+#include"T.h"
 using namespace std;
 int main()
 {

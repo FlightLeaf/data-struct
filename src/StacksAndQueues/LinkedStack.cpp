@@ -1,7 +1,7 @@
 #include <iostream>
 #include <assert.h>
-#include "LinkedList.h"
-#include "Stack.h"
+#include"LinkedList.h"
+#include"Stack.h"
 
 using namespace std;
 
