@@ -1,3 +1,6 @@
+/*
+    链式栈实现表达式计算
+*/
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
