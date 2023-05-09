@@ -14,7 +14,7 @@
 |src|源代码||
 |test|测试代码||
 
-```C++
+```c++
 #include <iostream>
 template <class T>
 class LinkNode
@@ -43,7 +43,7 @@ public:
 |Stack.h|栈(Stack)模板类|需要具体的派生类来定义实现||
 |LinkedList.h|单链表结点的类|用于链式栈调用生成结点，无具体功能||
 
-### 线性表(LinearList)
+### 线性表(linearList)
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
@@ -53,7 +53,7 @@ public:
 |SingleList.cpp|常规单链表，储存int类型|添加、删除、查询定位等||
 |SingleListTest.cpp|单链表测试|-||
 
-### 栈和队列(Stacks And Queues)
+### 栈和队列(stacks qnd queues)
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
@@ -64,22 +64,17 @@ public:
 |SeqStack.cpp|顺序栈|入栈、出栈、取栈顶元素等||
 |SeqStackTest.cpp|顺序栈测试|-||
 
-### 数组、串与广义表(Arrays, Strings and Generalized Tables)
+### 数组和串(arrays and strings)
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
 
-### 树(terr)
+### 树与二叉树(tree and binary tree)
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
 
-### 集合与字典(Collection and Dictionary)
-
-|  文件名  |  功能  | 具体内容 | 备注 |
-|:---:|:---:|:---:|:---:|
-
-### 搜索结构(Search Structure)
+### 搜索(search)
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
