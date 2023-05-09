@@ -3,7 +3,6 @@ using namespace std;
 int main()
 {
     CalculatorLinkedStack c;
-    double rel = c.Run();
-    cout<<rel<<endl;
+    cout<<c.Run()<<endl;
     return 0;
 }

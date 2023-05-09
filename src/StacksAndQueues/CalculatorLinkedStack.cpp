@@ -181,6 +181,7 @@ bool CalculatorLinkedStack::IsDigit(char temp)
     case '%':
     case '(':
     case ')':
+    case '#':
         return false;
         break;
     }
@@ -191,13 +192,13 @@ bool CalculatorLinkedStack::get2Operands(double &left, double &right)
 {
     if (value.IsEmpty())
     {
-        cerr << "无右操作数" << endl;
+        cerr << "no right!" << endl;
         return false;
     }
     value.Pop(right);
     if (value.IsEmpty())
     {
-        cerr << "无左操作数" << endl;
+        cerr << "no left!" << endl;
         return false;
     }
     value.Pop(left);
@@ -224,7 +225,7 @@ void CalculatorLinkedStack::DoOperator(char op)
         case '/':
             if (right == 0.0)
             {
-                cerr << "除数为零！" << endl;
+                cerr << "/right = 0!!!" << endl;
             }
             value.Push(left / right);
             break;
@@ -237,50 +238,54 @@ void CalculatorLinkedStack::DoOperator(char op)
 
 void CalculatorLinkedStack::AddOperand(char val)
 {
-    int va = val-'0';//转为整型
+    int va = val - '0'; // 转为整型
     value.Push(va);
 }
 
 void CalculatorLinkedStack::postfix()
 {
-    
 }
 
 double CalculatorLinkedStack::Run()
 {
-    getline(cin,input);
-    input = "("+input+")";
-    cout<<input<<endl;
-    char ch1,op_temp;
+    char ch,top,oper,s;
+    double newValue;
+    double res;
     op.Push('#');
-    int len = input.size();
-    for(int i = 0; i<len ;i++)
+    cin.get(ch);
+    while(!op.IsEmpty())
     {
-        if(IsDigit(input[i]))
+        if(IsDigit(ch))
         {
-            AddOperand(input[i]);
+            cout << ch<<endl;
+            cin.putback(ch);
+            cin>>newValue;
+            value.Push(newValue);
+            cin.get(ch);
         }
         else
         {
-            op.getTop(ch1);
-            if(isp(ch1)<icp(input[i]))
+            op.getTop(top);
+            if(icp(ch)>isp(top))
             {
-                op.Push(input[i]);
-                continue;
+                op.Push(ch);
+                cin.get(ch);
             }
-            else if(isp(ch1)>icp(input[i]))
+            else if(icp(ch)<isp(top))
             {
-                op.Pop(op_temp);
-                DoOperator(op_temp);
+                op.Pop(oper);
+                DoOperator(oper);
             }
             else
             {
-                op.Pop(op_temp);
-                if(op_temp == '(') continue;
+                op.Pop(oper);
+                if(oper == '(')
+                {
+                    cin.get(ch);
+                }
             }
         }
     }
-    double rel;
-    value.getTop(rel);
-    return rel;
+    value.getTop(res);
+    return res;
 }

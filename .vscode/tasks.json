@@ -19,11 +19,31 @@
             "problemMatcher": [
                 "$gcc"
             ],
+            "group": "build",
+            "detail": "调试器生成的任务。"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe 生成和调试活动文件",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
+                "-I",
+                "${workspaceFolder}/include/"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "detail": "调试器生成的任务。"
+            }
         }
     ],
     "version": "2.0.0"
