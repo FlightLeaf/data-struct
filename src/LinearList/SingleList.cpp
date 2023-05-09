@@ -1,169 +1,183 @@
 #include <iostream>
 using namespace std;
 
-class SingleList;
-class LinkNode
-{
-    friend SingleList;
-    private:
-        LinkNode *link;
-        int data;
-    public:
-    LinkNode(LinkNode *ptr = NULL){link = ptr;};
-    LinkNode(const int &item,LinkNode *ptr = NULL)
+template<class T> class SingleList;
+
+template<class T>
+class LinkNode{
+    friend class SingleList<T>;
+private:
+    LinkNode<T> *next;
+    T data;
+public:
+    LinkNode(LinkNode<T> *ptr = NULL){next = ptr;};
+    LinkNode(const T &item,LinkNode<T> *ptr = NULL)
     {
         data = item;
-        link = ptr;
+        next = ptr;
     };
     ~LinkNode(){};
 };
 
+template<class T>
 class SingleList
 {
 private:
-    LinkNode *first;
+    LinkNode<T> *first;
 public:
-    SingleList(){first = new LinkNode();};
-    ~SingleList(){MakeEmpty();};
-    void MakeEmpty();
-    int Length();
-    LinkNode *getHead();
-    LinkNode *Find(int x);
-    LinkNode *Locate(int i);
-    int GetData(int i,int &x);
-    void SetData(int x,int i);
-    int Insert(int x,int i);
-    int Remove(int &x,int i);
-    int IsEmpty();
-    void input(int endTag);
-    void output();
+    SingleList(){first = new LinkNode<T>();};
+    ~SingleList(){makeEmpty();};
+    void makeEmpty();
+    int length() const;
+    LinkNode<T> *getHead() const;
+    LinkNode<T> *find(T x) const;
+    LinkNode<T> *locate(int i) const;
+    bool getData(int i,T &x) const;
+    void setData(int i,const T &x);
+    bool insert(int i,const T &x);
+    bool remove(int i,T &x);
+    bool isEmpty() const;
+    void input(T endTag);
+    void output() const;
 };
-void SingleList::MakeEmpty()
+
+template<class T>
+void SingleList<T>::makeEmpty()
 {
-    LinkNode *p;
-    while (first->link != NULL)
+    LinkNode<T> *p;
+    while (first->next != NULL)
     {
-        p = first->link;
-        first->link = p->link;
+        p = first->next;
+        first->next = p->next;
         delete p; 
     }  
 }
 
-int SingleList::Length()
+template<class T>
+int SingleList<T>::length() const
 {
     //p指向第一个节点
-    LinkNode *p = first->link;
+    LinkNode<T> *p = first->next;
     //计数器
     int count = 0;
     //p不为空的时候先计数，然后指向下一节点
     while (p!=NULL)
     {
         count++;
-        p = p->link;
+        p = p->next;
     }
     return count;
 }
 
-LinkNode *SingleList::getHead()
+template<class T>
+LinkNode<T> *SingleList<T>::getHead() const
 {
     return first;
 }
 
-LinkNode *SingleList::Find(int x)
+template<class T>
+LinkNode<T> *SingleList<T>::find(T x) const
 {
-    LinkNode *p = first->link;
+    LinkNode<T> *p = first->next;
     while (p != NULL)
     {
         if(p->data == x)
         {
             break;
         }
-        p = p->link;
+        p = p->next;
     }
     return p;
 }
 
-LinkNode *SingleList::Locate(int i)
+template<class T>
+LinkNode<T> *SingleList<T>::locate(int i) const
 {
-    LinkNode *p = first;
+    LinkNode<T> *p = first;
     if(i<=0)return NULL;
     int j = 0;
     while (p != NULL&&j<i)
     {
-        p = p->link;
+        p = p->next;
         j++;
     }
     return p;
 }
 
-int SingleList::GetData(int i,int &x)
+template<class T>
+bool SingleList<T>::getData(int i,T &x) const
 {
-    LinkNode *p = Locate(i);
+    LinkNode<T> *p = locate(i);
     if(p!=NULL)
     {
         x = p->data;
-        return 1;
+        return true;
     }
     else
     {
-        return 0;
+        return false;
     }
 }
 
-void SingleList::SetData(int x,int i)
+template<class T>
+void SingleList<T>::setData(int i,const T &x)
 {
     if(i<=0)return;
-    LinkNode *p = Locate(i);
+    LinkNode<T> *p = locate(i);
     if(p!=NULL)p->data = x;
 }
-//疑惑
-int SingleList::Insert(int x,int i)
+
+template<class T>
+bool SingleList<T>::insert(int i,const T &x)
 {
-    if(i<=0)return 0;
-    LinkNode *p = Locate(i);
-    LinkNode *newList = new LinkNode(x,p->link);
-    LinkNode *before = Locate(i-1);
-    before->link = newList;
-    return 1;
+    if(i<=0)return false;
+    LinkNode<T> *p = locate(i);
+    LinkNode<T> *newNode = new LinkNode<T>(x,p);
+    LinkNode<T> *before = locate(i-1);
+    before->next = newNode;
+    return true;
 }
 
-int SingleList::Remove(int &x,int i)
+template<class T>
+bool SingleList<T>::remove(int i,T &x)
 {
-    LinkNode *p = Locate(i-1),*q;
-    if(p==NULL)return 0;
-    q = p->link;
-    p->link = q->link;
+    LinkNode<T> *p = locate(i-1),*q;
+    if(p==NULL)return false;
+    q = p->next;
+    p->next = q->next;
     x = q->data;
     delete q;
-    return 1;
+    return true;
 }
 
-int SingleList::IsEmpty()
+template<class T>
+bool SingleList<T>::isEmpty() const
 {
-    return(first->link==NULL?1:0);
+    return(first->next==NULL?true:false);
 }
 
-void SingleList::input(int endTag)
+template<class T>
+void SingleList<T>::input(T endTag)
 {
-    int data;
-    LinkNode *newnode;
+    T data;
+    LinkNode<T> *newnode;
     cin>>data;
     while(data != endTag)
     {
-        newnode = new LinkNode(data); 
-        newnode->link = first->link;
-        first->link = newnode;
+        newnode = new LinkNode<T>(data); 
+        newnode->next = first->next;
+        first->next = newnode;
         cin>>data;
     }
 }
 
-void SingleList::output()
+template<class T>
+void SingleList<T>::output() const
 {
-    LinkNode *p = first->link;
+    LinkNode<T> *p = first->next;
     while(p!=NULL)
     {
         cout<<p->data<<endl;
-        p = p->link;
+        p = p->next;
     }
 }
-

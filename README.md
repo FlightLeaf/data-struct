@@ -57,8 +57,7 @@ public:
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
-|Calculator.cpp|计算器|中缀表达式转后缀、计算等|未完成|
-|CalculatorLinkedStack.cpp|链式栈实现表达式运算|中缀表达式转后缀、计算、括号规则判断等|未完成|
+|CalculatorLinkedStack.cpp|链式栈实现表达式运算|中缀表达式转后缀、计算、括号规则判断等||
 |CalculatorLinkedStackTest.cpp|链式栈实现表达式运算测试|-||
 |LinkedStack.cpp|链式栈|入栈、出栈、取栈顶元素等||
 |LinkedStackTest.cpp|链式栈测试|-||
