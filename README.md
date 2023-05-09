@@ -41,7 +41,8 @@ public:
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
 |[Stack.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/Stack.h)|栈(Stack)模板类|需要具体的派生类来定义实现||
-|[LinkedList.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/LinkedList.hs)|单链表结点的类|用于链式栈调用生成结点，无具体功能||
+|[LinkedList.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/LinkedList.h)|单链表结点的类|用于链式栈调用生成结点，无具体功能||
+|[Queue.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/Queue.h)|队列模板类|需要具体的派生类来定义实现||
 
 ### 线性表(linearList)
 
@@ -63,6 +64,7 @@ public:
 |[LinkedStackTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedStack.cpp)|链式栈测试|-||
 |[SeqStack.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqStack.cpp)|顺序栈|入栈、出栈、取栈顶元素等||
 |[SeqStackTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqStackTest.cpp)|顺序栈测试|-||
+|[SeqQueue.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqQueue.cpp)|循环顺序队列|出队、入队、获取队首等|未完成|
 
 ### 数组和串(arrays and strings)
 
