@@ -26,11 +26,6 @@ public:
     /// @return 返回输入表达式的结果
     double Run();
 
-    /// @brief 传递已有的表达式计算
-    /// @param in 待计算的表达式
-    /// @return 计算结果
-    double Calulator(char *in);
-
     /// @brief 清空栈
     void clear()
     {

@@ -43,6 +43,8 @@ public:
 |[Stack.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/Stack.h)|栈(Stack)模板类|需要具体的派生类来定义实现||
 |[LinkedList.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/LinkedList.h)|单链表结点的类|用于链式栈调用生成结点，无具体功能||
 |[Queue.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/Queue.h)|队列模板类|需要具体的派生类来定义实现||
+|[LinkedStack.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/LinkedStack.h)|链式栈|入栈、出栈、取栈顶元素等||
+|[SingleList.h](https://gitee.com/flight-leaf/data-struct/blob/master/include/SingleList.h)|单链表|添加、删除、查询定位等||
 
 ### 线性表(linearList)
 
@@ -51,7 +53,7 @@ public:
 |[Poly.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/LinearList/Poly.cpp)|利用单链表实现多项式的相关计算|添加、插入、求和、求差、乘积等||
 |[SeqList.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/LinearList/SeqList.cpp)|常规顺序表|添加、删除等||
 |[SeqListTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/LinearList/SeqListTest.cpp)|顺序表测试|-||
-|[SingleList.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/LinearList/SingleList.cpp)|常规单链表，储存int类型|添加、删除、查询定位等||
+|[SingleList.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/LinearList/SingleList.cpp)|常规单链表|添加、删除、查询定位等||
 |[SingleListTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/LinearList/SingleListTest.cpp)|单链表测试|-||
 
 ### 栈和队列(stacks qnd queues)
@@ -66,7 +68,8 @@ public:
 |[SeqStackTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqStackTest.cpp)|顺序栈测试|-||
 |[SeqQueue.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqQueue.cpp)|循环顺序队列|出队、入队、获取队首等||
 |[SeqQueueTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqQueueTest.cpp)|循环顺序队列测试|-||
-|[LinkedQueue.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedQueue.cpp)|链式队列|出队、入队、获取队首等|未完成|
+|[LinkedQueue.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedQueue.cpp)|链式队列|出队、入队、获取队首等||
+|[LinkedQueueTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedQueueTest.cpp)|链式队列|出队、入队、获取队首等||
 
 ### 数组和串(arrays and strings)
 
