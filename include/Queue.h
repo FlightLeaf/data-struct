@@ -11,25 +11,25 @@ public:
 
     /// @brief 新元素进队列
     /// @param value 待加入的新元素
-    virtual void EnQueue(const T &value);
+    virtual bool EnQueue(const T &value) = 0;
 
     /// @brief 队尾元素出队列
     /// @param value 获取到队尾元素值的引用
-    virtual void DeQueue(T &value);
+    virtual bool DeQueue(T &value) = 0;
 
     /// @brief 获取队头元素的值
     /// @param value 获取队头元素的值引用
-    virtual void getFront(T &value);
+    virtual bool getFront(T &value) = 0;
 
     /// @brief 判断是否为空
     /// @return true 队列空
-    virtual bool isEmpty();
+    virtual bool isEmpty() = 0;
 
     /// @brief 判断队列是否已满
     /// @return true 队列满
-    virtual bool isFull();
+    bool isFull();
 
     /// @brief 获取队列元素个数
     /// @return 元素个数
-    virtual int getSize();
+    virtual int getSize() = 0;
 };
