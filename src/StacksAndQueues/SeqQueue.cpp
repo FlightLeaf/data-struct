@@ -43,6 +43,10 @@ public:
     /// @return 元素个数
     int getSize() { return (rear - front + maxSize) % maxSize; };
 
+    /// @brief 杨辉三角的实现
+    /// @param n 行数
+    void YANGVI(int n);
+
     friend std::ostream &operator<<(std::ostream &os, const SeqQueue<T> &queue)
     {
         os << "front = " << queue.front << ",rear = " << queue.rear << endl;
@@ -82,4 +86,26 @@ bool SeqQueue<T>::getFront(T &value)
     if(isEmpty()) return false;
     value = elements[value];
     return true;
+}
+
+template <class T>
+void SeqQueue<T>::YANGVI(int n)
+{
+    int i = 1, j, s = 0, k = 0, t, u;
+    EnQueue(1);
+    EnQueue(1);
+    for (i = 1; i < n; i++)
+    {
+        cout << endl;
+        EnQueue(k);
+        for (j = 1; j <= i + 2; j++)
+        {
+            DeQueue(t);
+            u = s + t;
+            EnQueue(u);
+            s = t;
+            if (j != i + 2)
+                cout << s << ' ';
+        }
+    }
 }
