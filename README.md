@@ -75,6 +75,7 @@ public:
 
 |  文件名  |  功能  | 具体内容 | 备注 |
 |:---:|:---:|:---:|:---:|
+|[Trituple.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/ArraysAndStrings/Trituple.cpp)|稀疏矩阵|矩阵加法，矩阵乘法，以及存储|未完成|
 
 ### 树与二叉树(tree and binary tree)
 
