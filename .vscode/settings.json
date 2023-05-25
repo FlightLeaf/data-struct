@@ -12,6 +12,14 @@
         "limits": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "optional": "cpp",
+        "cmath": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp"
     }
 }
