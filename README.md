@@ -69,7 +69,7 @@ public:
 |[SeqQueue.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqQueue.cpp)|循环顺序队列|出队、入队、获取队首等||
 |[SeqQueueTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/SeqQueueTest.cpp)|循环顺序队列测试|-||
 |[LinkedQueue.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedQueue.cpp)|链式队列|出队、入队、获取队首等||
-|[LinkedQueueTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedQueueTest.cpp)|链式队列|出队、入队、获取队首等||
+|[LinkedQueueTest.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/StacksAndQueues/LinkedQueueTest.cpp)|链式队列测试|出队、入队、获取队首等||
 
 ### 数组和串(arrays and strings)
 

@@ -283,24 +283,5 @@ int main()
     myPoly.Remove(4,2);
     myPoly.output();
     cout<<"--------"<<endl;
-    //cout<<"--------"<<endl;
-    //myPoly2.input(100);
-    //myPoly2.output();
-    //cout<<"--------"<<endl;
-    //myPoly.reduce(myPoly2);
-    //myPoly.output();
-    //cout<<"--------"<<endl;
-    //myPoly.multiply(myPoly2);
-    //myPoly.output();
-    /*myPoly.output();
-    cout<<"--------"<<endl;
-    myPoly.Insert(3,3);
-    myPoly.output();
-    cout<<"--------"<<endl;
-    myPoly.Remove(3,3);
-    myPoly.output();
-    cout<<"--------"<<endl;
-    cout<<myPoly.result(1)<<endl;
-    cout<<"--------"<<endl;*/
-    return 1;
+    return 0;
 }

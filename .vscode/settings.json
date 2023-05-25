@@ -6,6 +6,12 @@
         "array": "cpp",
         "deque": "cpp",
         "vector": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "*.tcc": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "typeinfo": "cpp"
     }
 }

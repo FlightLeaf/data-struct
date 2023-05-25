@@ -6,7 +6,11 @@ const int DafaultSize = 100;
 template <class T>
 struct Trituple
 {
-    int row, col;
+    /// @brief 行号
+    int row;
+    /// @brief 列号
+    int col;
+    /// @brief 元素的值
     T value;
     Trituple<T> &operator=(Trituple<T> &x)
     {
@@ -79,7 +83,7 @@ SparseMatrix<T>::SparseMatrix(int size) : maxTerms(size)
 }
 
 template <class T>
-SparseMatrix<T>::SparseMatrix(SparseMatrix<T> &matrix)
+SparseMatrix<T>::SparseMatrix(SparseMatrix<T> &x)
 {
     Rows = matrix.Rows;
     Cols = matrix.Cols;
@@ -96,3 +100,5 @@ SparseMatrix<T>::SparseMatrix(SparseMatrix<T> &matrix)
         smArrays[i] = x.smArrays[i];
     }
 }
+
+
