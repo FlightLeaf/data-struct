@@ -8,13 +8,13 @@ class PolyNode
     friend Poly;
 
 private:
-    double coef;
+    float coef;
     int exp;
     PolyNode *next;
 
 public:
     PolyNode(PolyNode *temp = NULL) { next = temp; };
-    PolyNode(double coef, int exp, PolyNode *temp = NULL)
+    PolyNode(float coef, int exp, PolyNode *temp = NULL)
     {
         this->coef = coef;
         this->exp = exp;
@@ -30,34 +30,49 @@ private:
 public:
     Poly() { first = new PolyNode(); };
     ~Poly(){};
+
     /*清空多项式*/
     void MakeEmpty();
+
     /*返回多项式长度*/
     int length();
+
     /*找到exp的位置并返回PolyNode指针*/
     PolyNode *Find(int exp);
+
     /*新项的插入*/
-    int insert(double coef, int exp);
+    int insert(float coef, int exp);
+
     /*移除特定的某一项，系数可以为空*/
     int remove(int exp, double coef = 0);
+
     /*判断多项式是否为空*/
-    int sEmpty();
+    int isEmpty();
+
     /*输入多项式*/
     void input(int endTag);
+
     /*输出多项式*/
     void output();
+
     /*给多项式输入数值后计算结果*/
     float result(float x);
+
     /*多项式求导*/
     void derivatives();
+
     /*多项式获取头结点*/
     PolyNode *getFirst() { return first; };
+
     /*原多项式加多项式*/
     int add(Poly ploy);
+
     /*原多项式减多项式*/
     int reduce(Poly poly);
+
     /*多项式相乘*/
     Poly multiply(Poly ploy);
+
     /*复制函数*/
     Poly copy();
 };
@@ -116,28 +131,31 @@ PolyNode *Poly::Find(int exp)
     return 0;
 }
 
-int Poly::insert(double coef, int exp)
+int Poly::insert(float coef, int exp)
 {
-    if (coef != 0)
+    PolyNode *current = first;
+    if (first->next == NULL)
     {
-        PolyNode *current = first;
-        while (current->next != NULL && current->next->exp <= exp)
-        { // 判断当输入的exp小于等于原多项式中的某一项时就可以插入这一位置
-            current = current->next;
-        }
-        if (current->exp == exp)
-        { // 如果exp相同则合并系数即可
-            current->coef += coef;
-        }
-        else
-        {
-            PolyNode *new_node = new PolyNode(coef, exp); // 如果不相同则新建插入
-            new_node->next = current->next;
-            current->next = new_node;
-        }
+        PolyNode *new_node = new PolyNode(coef, exp); // 如果不相同则新建插入
+        new_node->next = current->next;
+        current->next = new_node;
         return 1;
     }
-    return 0;
+    while (current->next != NULL && current->next->exp <= exp)
+    { // 判断当输入的exp小于等于原多项式中的某一项时就可以插入这一位置
+        current = current->next;
+    }
+    if (current->exp == exp)
+    { // 如果exp相同则合并系数即可
+        current->coef += coef;
+    }
+    else
+    {
+        PolyNode *new_node = new PolyNode(coef, exp); // 如果不相同则新建插入
+        new_node->next = current->next;
+        current->next = new_node;
+    }
+    return 1;
 }
 
 int Poly::remove(int exp, double coef)
@@ -176,68 +194,52 @@ int Poly::remove(int exp, double coef)
     return result;
 }
 
-int Poly::sEmpty()
+int Poly::isEmpty()
 {
     return (first->next == NULL ? 1 : 0);
 }
 
 void Poly::input(int endTag)
 {
-    double coef = 10000;
-    int exp ;
-    do
+    double coef;
+    int exp;
+    while (cin >> coef && coef != 0)
     {
-        cin >> coef;
-        if (coef == endTag)
-        {
-            break;
-        }
         cin >> exp;
         insert(coef, exp);
-    } while (coef != endTag);
+    }
 }
 
 void Poly::output()
 {
     PolyNode *temp = first->next;
     int i = 0;
-
+    cout << "C(x)=";
     while (temp != NULL)
     {
-        i++;
-        if (i == 1)
-        {
-            cout << "C(x)=";
-        }
-        if (temp->exp == 0)
-        {
-            cout << temp->coef;
-        }
-        else if (temp->exp == 1 && i != 1)
-        {
-            cout << "+" << temp->coef << "x";
-        }
-        else if (temp->exp == 1 && i == 1)
-        {
-            cout << temp->coef << "x";
-        }
-        else if (temp->coef == 1)
-        {
-            cout << "x^" << temp->exp;
-        }
-        else if (temp->coef > 0 && i != 1)
-        {
-            cout << "+" << temp->coef << "x^" << temp->exp;
-        }
-        else if (temp->coef == 0)
+        if(temp->coef == 0)
         {
             temp = temp->next;
             continue;
-            ;
-        }
-        else
+        }   
+        if (temp->coef > 0 && temp != first->next && i!=0)
         {
-            cout << temp->coef << "x^" << temp->exp;
+            cout << "+";
+        }
+        if ((temp->coef != 1 || temp->exp == 0) && temp->coef != 0)
+        {
+            i++;
+            cout << temp->coef;
+        }
+        if (temp->exp > 1)
+        {
+            i++;
+            cout << "x^" << temp->exp;
+        }
+        else if (temp->exp == 1)
+        {
+            i++;
+            cout << "x";
         }
         temp = temp->next;
     }

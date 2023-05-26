@@ -98,8 +98,8 @@ int LinkedStack<T>::getSize()
     int count = 1;
     while (temp->link!=NULL)
     {
+        temp = temp->link;
         count++;
-        temp = temp->link;   
     }
     return count;
 }
