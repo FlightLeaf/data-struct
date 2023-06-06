@@ -1,3 +1,6 @@
+
+/////////////作业1：链表的操作（6月9日截止）////////////////
+
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -177,4 +180,21 @@ void SingleList::add(SingleList *a)
     {
         insert(a->locate(i));
     }
+}
+
+int main()
+{
+    SingleList myList;
+    int num;
+    cin >> num;
+    myList.input(num);
+    myList.output();
+    SingleList myList2;
+    int num2;
+    cin >> num2;
+    myList2.input(num2);
+    myList2.output();
+    myList.add(&myList2);
+    myList.output();
+    return 0;
 }

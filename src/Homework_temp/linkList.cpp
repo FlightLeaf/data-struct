@@ -1,5 +1,8 @@
-#include <iostream>
-#include <stdlib.h>
+
+////////作业0：顺序表的基本操作（6月9日截止）////////
+
+#include<iostream>
+#include<stdlib.h>
 using namespace std;
 typedef int T;
 class SeqList
@@ -81,4 +84,20 @@ void SeqList::Remove(T &x)
         data[i] = data[i + 1];
     }
     last--;
+}
+
+
+int main()
+{
+    SeqList myList(100);
+    myList.Input();
+    myList.Output();
+    int i;
+    for (i = 0; i < 5; i++)
+        myList.Insert(i + 10, i);
+    myList.Output();
+    for (i = 10; i < 15; i++)
+        myList.Remove(i);
+    myList.Output();
+    return 0;
 }

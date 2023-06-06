@@ -38,6 +38,8 @@
         "memory_resource": "cpp",
         "system_error": "cpp",
         "fstream": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "ctime": "cpp",
+        "iomanip": "cpp"
     }
 }
