@@ -84,11 +84,6 @@ public:
 |:---:|:---:|:---:|:---:|
 |[tree.cpp](https://gitee.com/flight-leaf/data-struct/blob/master/src/TreeAndBinaryTree/tree.cpp)|树的链式存储|创建树、遍历、求高度等||
 
-### 搜索(search)
-
-|  文件名  |  功能  | 具体内容 | 备注 |
-|:---:|:---:|:---:|:---:|
-
 ### 图(picture)
 
 |  文件名  |  功能  | 具体内容 | 备注 |
