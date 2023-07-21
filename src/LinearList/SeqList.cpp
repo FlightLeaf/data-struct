@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -121,7 +119,7 @@ void SeqList::output()
         cout << data[i] << " ";
 }
 
-void SeqList::reduce(SeqList &sq)
+/*void SeqList::reduce(SeqList &sq)
 {
     int index[20];
     int count = 0;
@@ -135,13 +133,34 @@ void SeqList::reduce(SeqList &sq)
                 count++;
             }
         }
-        
     }
     for(int i = 0;i<count;i++)
     {
         cout<<index[i]<<endl;
     }
+}*/
+
+void SeqList::reduce(SeqList &sq)
+{
+    int i,j;
+    int index[20];
+    int count=0;
+    for(i=0;i<Length();i++){
+        for(j=0;j<sq.Length();j++)
+        {
+            if(sq.GetData(j)==data[i])
+            {
+                index[count]=data[i];
+                count++;
+            }
+        }
+    }
+    for(int i=0;i<count;i++)
+    {
+        count<<index[i]<<endl;
+    }
 }
+
 
 int main()
 {
